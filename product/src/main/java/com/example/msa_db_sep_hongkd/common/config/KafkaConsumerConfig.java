@@ -23,7 +23,7 @@ public class KafkaConsumerConfig {
     private String offset;
 
     @Bean
-    public ConsumerFactory<String, RestockEvent> consumerFactory() {
+    public ConsumerFactory<String, Object> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
@@ -32,10 +32,7 @@ public class KafkaConsumerConfig {
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonJsonDeserializer.class);
 
-        config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES, "com.example.msa_db_sep_hongkd.common.product.service");
-        config.put(JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, "com.example.msa_db_sep_hongkd.common.product.service.RestockEvent");
-        config.put(JacksonJsonDeserializer.USE_TYPE_INFO_HEADERS, false);
-
+        config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES, "com.example.msa_db_sep_hongkd.*");
         return new DefaultKafkaConsumerFactory<>(config);
     }
 
