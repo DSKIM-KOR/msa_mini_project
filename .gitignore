@@ -1,0 +1,29 @@
+# Gradle / Java 공통
+**/build/
+**/.gradle/
+**/bin/
+*.class
+
+# IntelliJ
+.idea/
+**/*.iml
+*.ipr
+*.iws
+
+# application.yml 전체 제외 (설정 파일은 USB로 별도 관리)
+**/src/main/resources/application.yml
+**/src/main/resources/application.yaml
+**/src/main/resources/application-*.yml
+
+# React
+**/node_modules/
+**/build/
+**/.env
+**/.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 로그
+**/*.log
